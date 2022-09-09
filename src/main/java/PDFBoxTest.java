@@ -50,7 +50,6 @@ public class PDFBoxTest {
                                 .map(NegociacaoParser::parseNegociacaoRow)
                                 .collect(Collectors.toList());
                         negociacaoList.forEach(System.out::println);
-                        negociacoes.addAll(negociacaoList);
 
                         String dataPregao = Arrays.stream(text.split("\n"))
                                 .filter(s -> s.matches("[0-9]{2}\\/[0-9]{2}\\/[0-9]{4}\r"))
@@ -64,6 +63,15 @@ public class PDFBoxTest {
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
+
+                        negociacaoList.forEach(negociacao -> {
+                            try {
+                                negociacao.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(dataPregao));
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        negociacoes.addAll(negociacaoList);
                     }
                 });
 
