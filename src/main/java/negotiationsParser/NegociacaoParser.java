@@ -1,3 +1,5 @@
+package negotiationsParser;
+
 public class NegociacaoParser {
     public static Negociacao parseNegociacaoRow(String row) {
         String[] tokens = row.split(" ");

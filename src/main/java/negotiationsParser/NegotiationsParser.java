@@ -1,3 +1,5 @@
+package negotiationsParser;
+
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
@@ -11,7 +13,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-public class PDFBoxTest {
+public class NegotiationsParser {
     public static void main(String[] args) throws IOException {
 
         List<Pregao> pregoes = new ArrayList<>();
