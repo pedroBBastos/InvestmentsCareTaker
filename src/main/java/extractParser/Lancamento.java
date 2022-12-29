@@ -1,7 +1,9 @@
 package extractParser;
 
 import com.opencsv.bean.CsvBindByPosition;
+import lombok.Data;
 
+@Data
 public class Lancamento {
 
     @CsvBindByPosition(position = 0)
