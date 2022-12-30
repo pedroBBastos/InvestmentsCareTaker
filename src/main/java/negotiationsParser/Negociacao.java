@@ -35,8 +35,7 @@ public class Negociacao {
     @Column(name = "valorTotal")
     private Float valorTotal;
 
-    @Column(name = "date")
-    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
+    @Column(name = "date", columnDefinition = "DATE")
     private Date date; // para poder depois buscar o preço do dolar nesta data
                        // e saber o valor real da ação...
 }

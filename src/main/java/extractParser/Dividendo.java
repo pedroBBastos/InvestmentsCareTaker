@@ -17,12 +17,10 @@ public class Dividendo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "data_liquidacao")
-    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
+    @Column(name = "data_liquidacao", columnDefinition = "DATE")
     private Date dataLiquidacao;
 
-    @Column(name = "data_movimentacao")
-    @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
+    @Column(name = "data_movimentacao", columnDefinition = "DATE")
     private Date dataMovimentacao;
 
     @Column(name = "ticker")
