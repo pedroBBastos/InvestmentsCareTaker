@@ -29,7 +29,7 @@ public class ExtractParser implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        String fileName = "C:\\Users\\Pedro Bastos\\Downloads\\Extrato_2022-09-09.csv";
+        String fileName = "C:\\Users\\Pedro Bastos\\Downloads\\Extrato_2022-12-31.csv";
 
         List<Lancamento> beans = new CsvToBeanBuilder(new FileReader(fileName))
                 .withType(Lancamento.class)

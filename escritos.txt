@@ -1,1 +1,6 @@
 https://github.com/mkyong/spring-boot/tree/master/spring-data-jpa-postgresql
+
+----
+
+investigar o pq os valores do SQL dão diferentes do que a corretora mostra
+investigar o pq de aumentar o numero de linhas quando faço join com cotacao_dolar

@@ -2,14 +2,22 @@
   "code": "USD",
   "codein": "BRL",
   "name": "Dólar Americano/Real Brasileiro",
-  "high": "5.2681",
-  "low": "5.2681",
-  "varBid": "0.0005",
-  "pctChange": "0.01",
-  "bid": "5.2676",
-  "ask": "5.2685",
-  "timestamp": "1672272925",
-  "create_date": "2022-12-28 21:15:25"
+  "high": "5.2865",
+  "low": "5.2865",
+  "varBid": "0",
+  "pctChange": "0",
+  "bid": "5.286",
+  "ask": "5.287",
+  "timestamp": "1672351203",
+  "create_date": "2022-12-29 19:00:03"
+}, {
+  "high": "5.3042",
+  "low": "5.1898",
+  "varBid": "0.0189",
+  "pctChange": "0.36",
+  "bid": "5.286",
+  "ask": "5.287",
+  "timestamp": "1672349621"
 }, {
   "high": "5.2681",
   "low": "5.2681",

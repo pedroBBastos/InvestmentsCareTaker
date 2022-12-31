@@ -73,6 +73,10 @@ public class Application implements CommandLineRunner {
                         negociacaoList.forEach(negociacao -> {
                             try {
                                 negociacao.setDate(new SimpleDateFormat("dd/MM/yyyy").parse(dataPregao));
+                                if (negociacao.getTipoDeMercado().equals("FRACIONARIO")) {
+                                    String ticker = negociacao.getTicker();
+                                    negociacao.setTicker(ticker.substring(0, ticker.length()-1));
+                                }
                             } catch (ParseException e) {
                                 e.printStackTrace();
                             }
