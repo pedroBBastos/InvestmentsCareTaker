@@ -9,3 +9,7 @@ investigar o pq de aumentar o numero de linhas quando faço join com cotacao_dol
 
 alguns dividendos não estão sendo considerados (como itausa) pq o ticker está vindo
 com BRITSACNPA11 (ou algo assim......)
+
+do csv para dividendos:
+    - códigos 22 (dividendos), 79 (JCP), 129 (PAGAMENTO DE FRAÇÕES),
+    200 (RENDIMENTOS)

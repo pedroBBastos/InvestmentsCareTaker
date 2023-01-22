@@ -40,7 +40,7 @@ public class ExtractParser implements CommandLineRunner {
 
         List<Dividendo> dividendos = new ArrayList<>();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Pattern pattern = Pattern.compile("([A-Z]{4}[0-9]{1,2})");
+        Pattern pattern = Pattern.compile("([A-Z]{4}[0-9]{1,2}|[A-Z]{11}[0-9]{1,2})");
 
         for(Lancamento lancamento : beans) {
             Matcher matcher = pattern.matcher(lancamento.getHistorico());
