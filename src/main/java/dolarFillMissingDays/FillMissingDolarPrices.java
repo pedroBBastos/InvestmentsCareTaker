@@ -2,7 +2,6 @@ package dolarFillMissingDays;
 
 import dolarParser.CotacaoDolar;
 import dolarParser.CotacaoDolarRepository;
-import dolarParser.DolarParser;
 import org.javatuples.Pair;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,8 @@ import java.util.*;
 public class FillMissingDolarPrices implements CommandLineRunner {
 
     // BIG TODO: Jogar os repositories para outro diretório para não acabar tbem
-    // importando os outros SpringBootApplication (dolarParser)... pq como está acaba
-    // executando o outro tbem...
+    // importando os outros SpringBootApplication (dolarParser) pelo ComponentScan...
+    // pq como está acaba executando o outro tbem...
 
     @Autowired
     private CotacaoDolarRepository repository;
