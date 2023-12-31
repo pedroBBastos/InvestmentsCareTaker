@@ -29,7 +29,7 @@ public class ExtractParser implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        String fileName = "C:\\Users\\Pedro Bastos\\Downloads\\Extrato_2022-12-31.csv";
+        String fileName = "C:\\Users\\Pedro Bastos\\Desktop\\notasNegociacaoB3\\Extrato_2023-12-30.csv";
 
         List<Lancamento> beans = new CsvToBeanBuilder(new FileReader(fileName))
                 .withType(Lancamento.class)
@@ -41,6 +41,8 @@ public class ExtractParser implements CommandLineRunner {
         List<Dividendo> dividendos = new ArrayList<>();
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Pattern pattern = Pattern.compile("([A-Z]{4}[0-9]{1,2}|[A-Z]{11}[0-9]{1,2})");
+
+        Float sumLancamento = 0f;
 
         for(Lancamento lancamento : beans) {
             Matcher matcher = pattern.matcher(lancamento.getHistorico());
@@ -64,6 +66,8 @@ public class ExtractParser implements CommandLineRunner {
             Float valorLancamento = Float.parseFloat(lancamento
                     .getLancamento().replace(',', '.'));
 
+            sumLancamento += valorLancamento;
+
             dividendos.add(Dividendo.builder()
                     .dataLiquidacao(dataLiquidacao)
                     .dataMovimentacao(dataMovimentacao)
@@ -71,6 +75,8 @@ public class ExtractParser implements CommandLineRunner {
                     .lancamento(valorLancamento)
                     .build());
         }
+
+        System.out.println(sumLancamento);
 
         repository.saveAll(dividendos);
     }

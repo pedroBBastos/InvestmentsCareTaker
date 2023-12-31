@@ -1,6 +1,5 @@
 package dolarParser;
 
-import extractParser.ExtractParser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -11,9 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @SpringBootApplication
 public class DolarParser implements CommandLineRunner {
@@ -28,8 +25,8 @@ public class DolarParser implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         ClassLoader classLoader = DolarParser.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream("cotacoesDolarEmReais.json");
-        String fileName = null;
+//        InputStream inputStream = classLoader.getResourceAsStream("cotacoesDolarEmReais.json");
+        InputStream inputStream = classLoader.getResourceAsStream("cotacaoDolar2023.json");
 
         if (inputStream != null) {
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -42,22 +39,27 @@ public class DolarParser implements CommandLineRunner {
                 Object obj = jsonParser.parse(inputStreamReader);
 
                 JSONArray dolarPriceList = (JSONArray) obj;
-                List<CotacaoDolar> cotacoesDolar = new ArrayList<>();
+                Set<CotacaoDolar> cotacoesDolar = new HashSet<>();
 
                 dolarPriceList.forEach(o -> {
                     JSONObject jsonObject = (JSONObject) o;
                     Float valor = Float.parseFloat((String) jsonObject.get("ask"));
                     Date data = new Date(Long.parseLong((String) jsonObject.get("timestamp"))*1000);
 //                    java.sql.Date data = new java.sql.Date(Long.parseLong((String) jsonObject.get("timestamp"))*1000);
-                    cotacoesDolar.add(CotacaoDolar.builder()
+                    CotacaoDolar cotacaoDolar = CotacaoDolar.builder()
                             .valor(valor)
                             .data(data)
-                            .build());
+                            .build();
+                    cotacoesDolar.add(cotacaoDolar);
                 });
 
                 inputStreamReader.close();
 
-                repository.saveAll(cotacoesDolar);
+                List<CotacaoDolar> cotacaoDolarList = new ArrayList<>(cotacoesDolar);
+                cotacaoDolarList.sort(CotacaoDolar::compareTo);
+                cotacaoDolarList.forEach(System.out::println);
+
+                repository.saveAll(cotacaoDolarList);
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (ParseException e) {

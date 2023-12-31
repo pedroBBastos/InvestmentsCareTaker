@@ -33,7 +33,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws IOException {
         List<Negociacao> allNegociacoes = new ArrayList<>();
-        Files.walk(Paths.get("C:\\Users\\Pedro Bastos\\Desktop\\notasNegociacaoB3"))
+        Files.walk(Paths.get("C:\\Users\\Pedro Bastos\\Desktop\\notasNegociacaoB3\\2023"))
                 .filter(Files::isRegularFile)
                 .forEach(pdfFile -> {
                     String text = getStringFromPDFFile(pdfFile);
@@ -44,6 +44,11 @@ public class Application implements CommandLineRunner {
 
         List<Acao> acoes = new ArrayList<>(getAcoesFromNegociacoes(allNegociacoes));
         cleanStocks(acoes);
+
+        System.out.println("------------------------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------------");
+        acoes.forEach(acao -> System.out.println(acao.getNegociacoes()));
+
         acoes.forEach(acao -> repository.saveAll(acao.getNegociacoes()));
     }
 
